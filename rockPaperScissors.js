@@ -1,6 +1,6 @@
 // This is a Playable Rock paper Scissors game through java
 console.log("please capitalize the first letter of your choice, thanks!");
-
+console.log ("anything other than rock, paper, or scissors will not work!")
 
 var humanChoice = prompt("Rock, Paper, or Scissors");
 var computerChoice = Math.random(
@@ -14,6 +14,9 @@ if (computerChoice = 1)
     { computerChoice = "Paper"};
 if (computerChoice = 2)
     { computerChoice = "Scissors"};
+if (humanChoice == "hotdog"){
+    console.log ("Instant Win")
+}
 
 
 // This section determines the outcome of the game, winning or losing
@@ -25,22 +28,22 @@ if (computerChoice ==  humanChoice){
     console.log ("It's A TIE!")
 };
 
-if (computerChoice == "Rock" && humanChoice == "Scissors"){
+if (computerChoice == 0 && humanChoice == "Scissors"){
     console.log; ("You    LOSE");
 };
-if (computerChoice == "Scissors" && humanChoice == "Paper"){
+if (computerChoice == 2 && humanChoice == "Paper"){
     console.log; ("You    LOSE");
 };
-if (computerChoice == "Paper" && humanChoice == "Rock"){
+if (computerChoice == 1 && humanChoice == "Rock"){
     console.log; ("You    LOSE");
 };
-if (computerChoice == "Paper" && humanChoice == "Scissors"){
+if (computerChoice == 1 && humanChoice == "Scissors"){
     console.log; ("VICTORY!");
 };
-if (computerChoice == "Scissors" && humanChoice == "Rock"){
+if (computerChoice == 2 && humanChoice == "Rock"){
     console.log; ("VICTORY!");
 };
-if (computerChoice == "Rock" && humanChoice == "Paper"){
+if (computerChoice == 0 && humanChoice == "Paper"){
     console.log; ("VICTORY!");
 };
 
