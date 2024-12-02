@@ -1,72 +1,68 @@
-// This is a Playable Rock paper Scissors game through java
-console.log("please capitalize the first letter of your choice, thanks!");
-console.log ("anything other than rock, paper, or scissors will not work!")
+let playAgain = true; 
+let yourscore = 0; 
+let robotscore = 0;
+let ties = 0;
+console.log("Please enter Rock, Paper, or Scissors.");
+console.log("Anything other than Rock, Paper, or Scissors will not work!");
 
-var humanChoice = prompt("Rock, Paper, or Scissors");
-var computerChoice = Math.random(
-    0-2
-);
+while (playAgain) {
 
-//This section deides what the computer chooses
-if (computerChoice = 0)
-{ computerChoice = "Rock"};
-if (computerChoice = 1)
-    { computerChoice = "Paper"};
-if (computerChoice = 2)
-    { computerChoice = "Scissors"};
-if (humanChoice == "hotdog"){
-    console.log ("Instant Win")
+    // Prompt the user for their choice and convert it to lowercase
+    var humanChoice = prompt("Rock, Paper, or Scissors").trim().toLowerCase();
+    
+    // Validate user input
+    if (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors") {
+        console.log("Invalid input! Please enter Rock, Paper, or Scissors.");
+        continue; // Ask again for a valid choice
+    }
+
+    let computerChoice = Math.floor(Math.random() * 3); // Generate random number (0-2)
+
+    // Assign computer choice based on random number
+    if (computerChoice === 0) { computerChoice = "rock"; }
+    else if (computerChoice === 1) { computerChoice = "paper"; }
+    else if (computerChoice === 2) { computerChoice = "scissors"; }
+
+    // Display choices
+    console.log(`You chose: ${humanChoice}`);
+    console.log(`Computer chose: ${computerChoice}`);
+
+    //shhhhhhhh
+    if (humanChoice === "hotdog") {
+        console.log("Instant Win!");
+        yourscore++;
+        // Display scoreboard after "Instant Win"
+        console.log(`Your score: ${yourscore}, Robot score: ${robotscore}, Ties: ${ties}`);
+        continue;
+    }
+
+    // Determine the outcome
+    if (computerChoice === humanChoice) {
+        console.log("It's a TIE!");
+        ties++; // Increment ties
+    } else if (
+        (computerChoice === "rock" && humanChoice === "scissors") ||
+        (computerChoice === "paper" && humanChoice === "rock") ||
+        (computerChoice === "scissors" && humanChoice === "paper")
+    ) {
+        console.log("You LOSE!");
+        robotscore++; //robot's score
+    } else {
+        console.log("VICTORY!");
+        yourscore++; // Player score
+    }
+
+    
+    console.log(`Your score: ${yourscore}, Robot score: ${robotscore}, Ties: ${ties}`);
+
+    // Check if anyone has reached 5
+    if (yourscore === 5) {
+        console.log("Human Victory");
+        playAgain = false; // Stop the game
+    } else if (robotscore === 5) {
+        console.log("Robot Win");
+        playAgain = false; // Stop the game
+    }
 }
 
 
-// This section determines the outcome of the game, winning or losing
-
-if (computerChoice == "Paper" && humanChoice == "Rock"){
-    console.log; ("You    LOSE");
-};
-if (computerChoice ==  humanChoice){
-    console.log ("It's A TIE!")
-};
-
-if (computerChoice == 0 && humanChoice == "Scissors"){
-    console.log; ("You    LOSE");
-};
-if (computerChoice == 2 && humanChoice == "Paper"){
-    console.log; ("You    LOSE");
-};
-if (computerChoice == 1 && humanChoice == "Rock"){
-    console.log; ("You    LOSE");
-};
-if (computerChoice == 1 && humanChoice == "Scissors"){
-    console.log; ("VICTORY!");
-};
-if (computerChoice == 2 && humanChoice == "Rock"){
-    console.log; ("VICTORY!");
-};
-if (computerChoice == 0 && humanChoice == "Paper"){
-    console.log; ("VICTORY!");
-};
-
-
-
-let yourscore= 0
-let robotscore= 0
-// scoreboard
-if (computerChoice == "Rock" && humanChoice == "Paper"){
-    console.log ("your score",yourscore + 1, "robot  score", robotscore )
-};
-if (computerChoice == "Scissors" && humanChoice == "Rock"){
-    console.log ("your score",yourscore + 1, "robot  score", robotscore )
-};
-if (computerChoice == "Paper" && humanChoice == "Scissors"){
-    console.log ("your score",yourscore + 1, "robot  score", robotscore )
-};
-if (computerChoice == "Scissors" && humanChoice == "Paper"){
-    console.log ("your score",yourscore, "robot  score", robotscore + 1 )
-};
-if (computerChoice == "Rock" && humanChoice == "Scissors"){
-    console.log ("your score",yourscore, "robot  score", robotscore + 1 )
-};
-if (computerChoice == "Paper" && humanChoice == "Rock"){
-    console.log ("your score",yourscore, "robot  score", robotscore + 1 )
-};
